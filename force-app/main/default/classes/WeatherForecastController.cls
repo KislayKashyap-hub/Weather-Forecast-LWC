@@ -1,4 +1,4 @@
-public with sharing class WeatherController {
+public with sharing class WeatherForecastController {
 
     @AuraEnabled(cacheable=true)
     public static List<WeatherData> getForecastByBillingCity(Id accountId) {
