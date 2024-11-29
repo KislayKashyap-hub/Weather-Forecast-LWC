@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Weather Forecast Based on Billing City" icon-name="utility:location">
+        <template if:true={weatherData}>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Date">Date</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Temperature">Temperature (°C)</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Description">Description</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={weatherData} for:item="weather">
+                        <tr key={weather.forecastDate}>
+                            <td>
+                                <div class="slds-truncate" title={weather.forecastDate}>{weather.forecastDate}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={weather.temperature}>{weather.temperature}</div>
+                            </td>
+                            <td>
+                                <div class="slds-truncate" title={weather.description}>{weather.description}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading weather data..." size="large"></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>
